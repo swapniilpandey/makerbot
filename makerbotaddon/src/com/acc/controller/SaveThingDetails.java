@@ -37,6 +37,8 @@ public class SaveThingDetails
 {
 	private static final String USERNAME = "username";
 	private static final String PASSWORD = "password";
+	private static final String THINGURL = "thingurl";
+	private static final String DESCRIPTION = "description";
 
 	@Autowired
 	UserService userService;
@@ -61,6 +63,10 @@ public class SaveThingDetails
 			final JSONObject obj = (JSONObject) parser.parse(sbuf.toString());
 			final String username = String.valueOf(obj.get(USERNAME));
 			final String password = String.valueOf(obj.get(PASSWORD));
+			final String thingurl = String.valueOf(obj.get(THINGURL));
+			final String description = String.valueOf(obj.get(DESCRIPTION));
+
+
 
 			final MakerbotData makerbot = makerbotDetailsFacade.getMakerbotAccountDetails(username);
 
@@ -74,7 +80,7 @@ public class SaveThingDetails
 				if (null == makerbot.getUsername() && !makerbot.isCustomermakerbotstatus())
 
 				{
-					makerbotDetailsFacade.saveMakerbotAccountDetails(username, password);
+					makerbotDetailsFacade.saveMakerbotAccountDetails(username, password, thingurl, description);
 					System.out.println("user details updated successfully++++++++++++++++++++" + password);
 
 				}

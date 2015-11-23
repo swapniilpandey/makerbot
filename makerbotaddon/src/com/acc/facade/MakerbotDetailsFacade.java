@@ -16,5 +16,5 @@ public interface MakerbotDetailsFacade
 
 	public void updateMakerbotAccountDetails(String username, String password);
 
-	public void saveMakerbotAccountDetails(String username, String password);
+	public void saveMakerbotAccountDetails(String username, String password, final String thingurl, final String description);
 }

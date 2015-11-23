@@ -89,7 +89,7 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see MakerbotDetailsService.MakerbotDetailsService#getMakerbotAccountDetails(java.lang.String)
 	 */
 	@Override
@@ -117,7 +117,8 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 	}
 
 	@Override
-	public void saveMakerbotAccountDetails(final String username, final String password)
+	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl,
+			final String description)
 	{
 		System.out.println("String Password+++++++++++++++++++++++++++++" + password);
 
@@ -129,6 +130,8 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 		makerbot.setUsername(username);
 		makerbot.setPassword(encryptedPassword);
 		makerbot.setCustomermakerbotstatus(Boolean.TRUE);
+		makerbot.setThingurl(thingurl);
+		makerbot.setDescription(description);
 		System.out.println("inside sevice class+++++++++++++" + makerbot.getPassword() + "*****" + password);
 		modelService.save(makerbot);
 

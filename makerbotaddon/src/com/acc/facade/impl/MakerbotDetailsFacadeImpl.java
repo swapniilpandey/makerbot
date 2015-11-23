@@ -106,10 +106,11 @@ public class MakerbotDetailsFacadeImpl implements MakerbotDetailsFacade
 	 * @see com.acc.facade.MakerbotDetailsFacade#saveMakerbotAccountDetails(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void saveMakerbotAccountDetails(final String username, final String password)
+	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl,
+			final String description)
 	{
 		// YTODO Auto-generated method stub
-		makerbotDetailsService.saveMakerbotAccountDetails(username, password);
+		makerbotDetailsService.saveMakerbotAccountDetails(username, password, thingurl, description);
 
 	}
 

@@ -21,6 +21,10 @@ public interface MakerbotDetailsService
 	 */
 	public void updateMakerbotAccountDetails(String username, String password);
 
-	public void saveMakerbotAccountDetails(String username, String password);
+	public void saveMakerbotAccountDetails(String username, String password, String thingurl, String description);
+
+
+
+
 
 }
