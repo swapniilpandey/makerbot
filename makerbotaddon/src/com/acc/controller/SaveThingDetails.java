@@ -50,11 +50,11 @@ public class SaveThingDetails
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public void save(final HttpServletRequest request) throws UnsupportedEncodingException, IOException, ParseException
+	public String save(final HttpServletRequest request) throws UnsupportedEncodingException, IOException, ParseException
 
 	{
 		System.out.println("inside saveMakerbotDetails++++++++++++++++++++++++++++++ ");
-
+		String status = null;
 
 		final StringBuffer sbuf = getJsonBodyString(request);
 		if (StringUtils.isNotEmpty(sbuf.toString()))
@@ -82,18 +82,28 @@ public class SaveThingDetails
 				{
 					makerbotDetailsFacade.saveMakerbotAccountDetails(username, password, thingurl, description);
 					System.out.println("user details updated successfully++++++++++++++++++++" + password);
+					status = "success";
 
 				}
 				else
 				{
-
+					status = "failed";
 					System.out.println("this is the exiting user++++++++++++++++++++");
 				}
+			}
+
+			else
+			{
+				status = "failed";
+				System.out.println("unregistered hybris user***********");
+
 			}
 
 			System.out.println("outside if loop***********");
 
 		}
+
+		return status;
 	}
 
 	/**

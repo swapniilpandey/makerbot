@@ -49,12 +49,12 @@ public class UpdateMakerbotDetails
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
-	public void updateMakerbotDetails(final HttpServletRequest request) throws UnsupportedEncodingException, IOException,
+	public String updateMakerbotDetails(final HttpServletRequest request) throws UnsupportedEncodingException, IOException,
 			ParseException
 	{
 		System.out.println("inside updateMakerbotDetails++++++++++++++++++++++++++++++ ");
 
-
+		String status = null;
 		final StringBuffer sbuf = getJsonBodyString(request);
 		if (StringUtils.isNotEmpty(sbuf.toString()))
 		{
@@ -77,19 +77,23 @@ public class UpdateMakerbotDetails
 				{
 					makerbotDetailsFacade.updateMakerbotAccountDetails(username, password);
 					System.out.println("user details updated successfully++++++++++++++++++++" + password);
-
+					status = "success";
 				}
 				else
 				{
-
+					status = "failed";
 					System.out.println("new user++++++++++++++++++++");
 				}
+			}
+			else
+			{
+				status = "failed";
+				System.out.println("unregistered hybris user***********");
 
 			}
-
 			System.out.println("outside if loop***********");
-
 		}
+		return status;
 	}
 
 	/**
