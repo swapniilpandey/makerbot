@@ -18,10 +18,14 @@
 
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:noNamespaceSchemaLocation="items.xsd">
+			
+<!-- <collectiontypes>
+		<collectiontype code="StringCollection" elementtype="java.lang.String" autocreate="true" generate="false" type="list"/>
+</collectiontypes> -->
 <relations>
 		<relation code="Makerbot2CustomerRel" localized="false" autocreate="true" generate="true">
 			<description>This is a link between makerbot and the customer.</description>
-			<deployment table="Makerbot2CustomerRel" typecode="11008" />
+			<deployment table="Makerbot2CustomerRel" typecode="11228" />
 			<sourceElement type="Makerbot" qualifier="makerbot" cardinality="many" collectiontype="list" />
 			<targetElement type="Customer" qualifier="customer" cardinality="many" collectiontype="list" />
 		</relation>
@@ -56,7 +60,7 @@
 
 
 <itemtype code="Makerbot" autocreate="true" generate="true" extends="GenericItem">
-			<deployment table="Makerbot" typecode="11007" />
+			<deployment table="Makerbot" typecode="11337" />
 			<attributes>
 				<attribute qualifier="username" type="java.lang.String">
 					<modifiers read="true" write="true" search="true" optional="false" unique="true" />
@@ -66,11 +70,11 @@
 					<modifiers read="true" write="true" search="true" optional="false" />
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="thingurl " type="java.lang.String" >
+				<attribute qualifier="thingurl " type="StringCollection" >
 					<modifiers read="true" write="true" search="true" optional="true" />
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="description " type="java.lang.String">
+				<attribute qualifier="description " type="StringCollection">
 					<modifiers read="true" write="true" search="true" optional="true"/>
 					<persistence type="property" />
 				</attribute>

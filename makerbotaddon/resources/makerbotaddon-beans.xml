@@ -33,8 +33,8 @@
 	<bean class="com.acc.data.MakerbotData">
 	<property name="username" type="String"/>
 	<property name="password" type="String"/>
-	<property name="description" type="String"/>
-	<property name="thingurl" type="String"/>
+	<property name="description" type="java.util.Collection&lt;String>"/>
+	<property name="thingurl" type="java.util.Collection&lt;String>"/>
     <property name="Customermakerbotstatus" type="boolean"/>
 	</bean>
 

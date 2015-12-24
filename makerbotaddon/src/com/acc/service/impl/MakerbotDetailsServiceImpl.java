@@ -7,6 +7,8 @@ import de.hybris.platform.servicelayer.model.ModelService;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -27,6 +29,8 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 	@Resource(name = "modelService")
 	private ModelService modelService;
 	private static MessageDigest digester;
+	String thingUrl = null;
+	String description = null;
 
 
 	static
@@ -89,7 +93,7 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see MakerbotDetailsService.MakerbotDetailsService#getMakerbotAccountDetails(java.lang.String)
 	 */
 	@Override
@@ -117,21 +121,33 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 	}
 
 	@Override
-	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl,
-			final String description)
+	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl, String description)
 	{
 		System.out.println("String Password+++++++++++++++++++++++++++++" + password);
 
 		final String encryptedPassword = encryptPassword(password);
 
 		System.out.println("String encryptedPassword+++++++++++++++++++++++++++++" + encryptedPassword);
-
+		final List<String> thingList = new ArrayList<String>();
+		final List<String> descList = new ArrayList<String>();
 		final MakerbotModel makerbot = modelService.create(MakerbotModel.class);
 		makerbot.setUsername(username);
 		makerbot.setPassword(encryptedPassword);
 		makerbot.setCustomermakerbotstatus(Boolean.TRUE);
-		makerbot.setThingurl(thingurl);
-		makerbot.setDescription(description);
+		for (final String thing : makerbot.getThingurl())
+		{
+			thingUrl = thing.toString();
+			thingList.add(thingUrl);
+		}
+		makerbot.setThingurl(thingList);
+
+		for (final String desc : makerbot.getDescription())
+		{
+			description = desc.toString();
+			descList.add(description);
+
+		}
+		makerbot.setDescription(descList);
 		System.out.println("inside sevice class+++++++++++++" + makerbot.getPassword() + "*****" + password);
 		modelService.save(makerbot);
 
