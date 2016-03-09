@@ -70,11 +70,11 @@
 					<modifiers read="true" write="true" search="true" optional="false" />
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="thingurl " type="StringCollection" >
+				<attribute qualifier="thingurl" type="StringCollection" >
 					<modifiers read="true" write="true" search="true" optional="true" />
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="description " type="StringCollection">
+				<attribute qualifier="description" type="StringCollection">
 					<modifiers read="true" write="true" search="true" optional="true"/>
 					<persistence type="property" />
 				</attribute>

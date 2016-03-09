@@ -29,8 +29,6 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 	@Resource(name = "modelService")
 	private ModelService modelService;
 	private static MessageDigest digester;
-	String thingUrl = null;
-	String description = null;
 
 
 	static
@@ -121,7 +119,8 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 	}
 
 	@Override
-	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl, String description)
+	public void saveMakerbotAccountDetails(final String username, final String password, final String thingurl,
+			final String description)
 	{
 		System.out.println("String Password+++++++++++++++++++++++++++++" + password);
 
@@ -134,19 +133,14 @@ public class MakerbotDetailsServiceImpl implements MakerbotDetailsService
 		makerbot.setUsername(username);
 		makerbot.setPassword(encryptedPassword);
 		makerbot.setCustomermakerbotstatus(Boolean.TRUE);
-		for (final String thing : makerbot.getThingurl())
-		{
-			thingUrl = thing.toString();
-			thingList.add(thingUrl);
-		}
+
+		thingList.add(thingurl);
 		makerbot.setThingurl(thingList);
 
-		for (final String desc : makerbot.getDescription())
-		{
-			description = desc.toString();
-			descList.add(description);
 
-		}
+		descList.add(description);
+
+
 		makerbot.setDescription(descList);
 		System.out.println("inside sevice class+++++++++++++" + makerbot.getPassword() + "*****" + password);
 		modelService.save(makerbot);
